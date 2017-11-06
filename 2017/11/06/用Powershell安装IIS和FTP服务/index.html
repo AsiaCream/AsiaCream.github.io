@@ -9,7 +9,7 @@ zh-CN"
             
                 <title>
                     
-                        MongoDB环境配置 |
+                        用Powershell安装IIS和FTP服务 |
                             
                                 MyBlog
                 </title>
@@ -19,18 +19,21 @@ zh-CN"
                     
 
                         
-                                <meta name="description" content="近期要使用Azure Cosmos DB下的DocumentDB进行测试，而DocumentDB只有PAAS层得，本地无法体验，只能在电脑本机安装MongoDB，然后用着MongoDB类比DocumentDB即可，同时由于DocumentDB兼容MongoDB的大多数语法，所以通过MongoDB去了解如何使用DocumentDB是可行的。 前言首先要下载MongoDB版本，到官网点击右上角的Dow">
-<meta name="keywords" content="mongoDB,noSql">
+                                <meta name="description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta name="keywords" content="powershell,iis,脚本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB环境配置">
-<meta property="og:url" content="http://hexo.asiacream.cn/2017/10/27/MongoDB环境配置/index.html">
+<meta property="og:title" content="用Powershell安装IIS和FTP服务">
+<meta property="og:url" content="http://hexo.asiacream.cn/2017/11/06/用Powershell安装IIS和FTP服务/index.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="近期要使用Azure Cosmos DB下的DocumentDB进行测试，而DocumentDB只有PAAS层得，本地无法体验，只能在电脑本机安装MongoDB，然后用着MongoDB类比DocumentDB即可，同时由于DocumentDB兼容MongoDB的大多数语法，所以通过MongoDB去了解如何使用DocumentDB是可行的。 前言首先要下载MongoDB版本，到官网点击右上角的Dow">
+<meta property="og:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-31T08:14:47.000Z">
+<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+<meta property="og:updated_time" content="2017-11-06T07:31:06.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB环境配置">
-<meta name="twitter:description" content="近期要使用Azure Cosmos DB下的DocumentDB进行测试，而DocumentDB只有PAAS层得，本地无法体验，只能在电脑本机安装MongoDB，然后用着MongoDB类比DocumentDB即可，同时由于DocumentDB兼容MongoDB的大多数语法，所以通过MongoDB去了解如何使用DocumentDB是可行的。 前言首先要下载MongoDB版本，到官网点击右上角的Dow">
+<meta name="twitter:title" content="用Powershell安装IIS和FTP服务">
+<meta name="twitter:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta name="twitter:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
 
                                     
                                         <link rel="alternative" href="/atom.xml" title="MyBlog" type="application/atom+xml">
@@ -137,14 +140,14 @@ zh-CN"
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/10/27/MongoDB环境配置/" title="MongoDB环境配置" itemprop="url">MongoDB环境配置</a>
+      <a href="/2017/11/06/用Powershell安装IIS和FTP服务/" title="用Powershell安装IIS和FTP服务" itemprop="url">用Powershell安装IIS和FTP服务</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="FDD" target="_blank" itemprop="author">FDD</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-27T08:52:35.000Z" itemprop="datePublished"> 发表于 2017-10-27</time>
+    <time datetime="2017-11-06T03:44:58.000Z" itemprop="datePublished"> 发表于 2017-11-06</time>
     
   </p>
 </header>
@@ -153,29 +156,30 @@ zh-CN"
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解压"><span class="toc-number">1.1.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-number">1.2.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为MongoDB配置Windows服务"><span class="toc-number">1.3.</span> <span class="toc-text">为MongoDB配置Windows服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">1.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">1.5.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可视化工具"><span class="toc-number">2.</span> <span class="toc-text">可视化工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB-Compass"><span class="toc-number">2.1.</span> <span class="toc-text">MongoDB Compass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL-Manager"><span class="toc-number">2.2.</span> <span class="toc-text">NoSQL Manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoBooster"><span class="toc-number">2.3.</span> <span class="toc-text">MongoBooster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Robo-3T"><span class="toc-number">2.4.</span> <span class="toc-text">Robo 3T</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行mongod-exe闪退"><span class="toc-number">3.1.</span> <span class="toc-text">运行mongod.exe闪退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB设置开机启动"><span class="toc-number">3.2.</span> <span class="toc-text">MongoDB设置开机启动</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>近期要使用Azure Cosmos DB下的DocumentDB进行测试，而DocumentDB只有PAAS层得，本地无法体验，只能在电脑本机安装MongoDB，然后用着MongoDB类比DocumentDB即可，同时由于DocumentDB兼容MongoDB的大多数语法，所以通过MongoDB去了解如何使用DocumentDB是可行的。</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先要下载MongoDB版本，到官网点击右上角的Download按钮即可跳转到<a href="https://www.mongodb.com/download-center/enterprise/releases" target="_blank" rel="external">下载页面</a>，如果提示要注册，请按要求填写邮箱等信息，完成后打勾，然后提交。本文环境是win10，下载的是<a href="https://downloads.mongodb.com/win32/mongodb-win32-x86_64-enterprise-windows-64-3.4.10.zip?_ga=2.266967308.381388412.1508924655-1748886100.1508924655" target="_blank" rel="external">mongodb-win32-x86_64-enterprise-windows-64-3.4.10.zip</a> ，ZIP文件300M左右。</p>
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>下载好后，解压（大约1G）到本地磁盘</p>
-<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>电脑—&gt;右键属性-&gt;高级系统设置-&gt;环境变量-&gt;在系统变量中选择Path-&gt;编辑-&gt;新建-&gt;把刚刚解压好的文件路径(MongoDB文件夹下bin目录)-&gt;点击确定保存</p>
-<h3 id="为MongoDB配置Windows服务"><a href="#为MongoDB配置Windows服务" class="headerlink" title="为MongoDB配置Windows服务"></a>为MongoDB配置Windows服务</h3><p>新建mongod.cfg文件，根据自己实际情况填写内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">systemLog:</div><div class="line">    destination: file</div><div class="line">    path: d:\mongodb\logs\mongod.log</div><div class="line">storage:</div><div class="line">    dbPath: d:\mongodb\database</div></pre></td></tr></table></figure>
-<p>在命令行中运行安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod.exe --config &quot;配置存放文件目录\mongod.cfg&quot; --install</div></pre></td></tr></table></figure>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>在bin目录下输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod.exe --dbpath “数据保存目录”</div></pre></td></tr></table></figure></p>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>浏览器中打开<code>http://localhost:27017</code> 即可查看，若能看到一下信息则配置正确</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">It looks like you are trying to access MongoDB over HTTP on the native driver port.</div></pre></td></tr></table></figure>
-<h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><h3 id="MongoDB-Compass"><a href="#MongoDB-Compass" class="headerlink" title="MongoDB Compass"></a>MongoDB Compass</h3><p><a href="https://www.mongodb.com/products/compass" target="_blank" rel="external">查看链接</a></p>
-<h3 id="NoSQL-Manager"><a href="#NoSQL-Manager" class="headerlink" title="NoSQL Manager"></a>NoSQL Manager</h3><p><a href="https://www.mongodbmanager.com/" target="_blank" rel="external">查看链接</a></p>
-<h3 id="MongoBooster"><a href="#MongoBooster" class="headerlink" title="MongoBooster"></a>MongoBooster</h3><p><a href="https://mongobooster.com/" target="_blank" rel="external">查看链接</a></p>
-<h3 id="Robo-3T"><a href="#Robo-3T" class="headerlink" title="Robo 3T"></a>Robo 3T</h3><p><a href="https://robomongo.org/" target="_blank" rel="external">查看链接</a></p>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="运行mongod-exe闪退"><a href="#运行mongod-exe闪退" class="headerlink" title="运行mongod.exe闪退"></a>运行mongod.exe闪退</h3><p>点击bin下的mongo.exe，出现闪退现象，到磁盘下创建一个目录，用于存放MongoDB数据文件，然后在bin目录下使用命令行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod.exe --dbpath “数据保存目录”</div></pre></td></tr></table></figure>
-<h3 id="MongoDB设置开机启动"><a href="#MongoDB设置开机启动" class="headerlink" title="MongoDB设置开机启动"></a>MongoDB设置开机启动</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">net</span> <span class="built_in">start</span> mongodb</div></pre></td></tr></table></figure>
-<p>找到任务管理器-&gt;服务，找到mongodb，打开，然后设置启动</p>
+		<ul>
+<li>Windows Server 2012 R2 Datacenter</li>
+<li>PowerShell</li>
+</ul>
+<h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快</p>
+<h3 id="安装IIS相关"><a href="#安装IIS相关" class="headerlink" title="安装IIS相关"></a>安装IIS相关</h3><p>IIS上部署的是C#项目，因此得安装IIS服务和应用开发</p>
+<h4 id="安装IIS服务器"><a href="#安装IIS服务器" class="headerlink" title="安装IIS服务器"></a>安装IIS服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server</div></pre></td></tr></table></figure>
+<h4 id="安装-NET应用程序开发"><a href="#安装-NET应用程序开发" class="headerlink" title="安装.NET应用程序开发"></a>安装.NET应用程序开发</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-asp,web-asp-net,web-asp-net45</div></pre></td></tr></table></figure>
+<h4 id="安装IIS管理控制台"><a href="#安装IIS管理控制台" class="headerlink" title="安装IIS管理控制台"></a>安装IIS管理控制台</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-mgmt-console</div></pre></td></tr></table></figure>
+<h4 id="检查有没有安装成功"><a href="#检查有没有安装成功" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
+<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
+<h4 id="终极打包安装"><a href="#终极打包安装" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server,web-asp,web-asp-net,web-asp-net45,web-mgmt-console</div></pre></td></tr></table></figure>
+<h3 id="安装FTP相关"><a href="#安装FTP相关" class="headerlink" title="安装FTP相关"></a>安装FTP相关</h3><p>FTP服务分为服务和拓展</p>
+<h4 id="安装FTP服务器"><a href="#安装FTP服务器" class="headerlink" title="安装FTP服务器"></a>安装FTP服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server</div></pre></td></tr></table></figure>
+<h4 id="安装FTP服务"><a href="#安装FTP服务" class="headerlink" title="安装FTP服务"></a>安装FTP服务</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-service</div></pre></td></tr></table></figure>
+<h4 id="安装FTP拓展"><a href="#安装FTP拓展" class="headerlink" title="安装FTP拓展"></a>安装FTP拓展</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-ext</div></pre></td></tr></table></figure>
+<h4 id="检查有没有安装成功-1"><a href="#检查有没有安装成功-1" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
+<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
+<h4 id="终极打包安装-1"><a href="#终极打包安装-1" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server,web-ftp-service,web-ftp-ext</div></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>使用PowerShell安装windows功能组件比直接鼠标点击的速度快，命令行输入后就可以挂机了，等待安装成功即可</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -183,13 +187,13 @@ zh-CN"
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/数据库/">数据库</a>
+  <a class="article-category-link" href="/categories/Web服务/">Web服务</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/mongoDB/">mongoDB</a><a href="/tags/noSql/">noSql</a>
+  <span></span> <a href="/tags/powershell/">powershell</a><a href="/tags/iis/">iis</a><a href="/tags/脚本/">脚本</a>
   </div>
 
 </div>
@@ -198,7 +202,7 @@ zh-CN"
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://hexo.asiacream.cn/2017/10/27/MongoDB环境配置/" data-title="MongoDB环境配置 | MyBlog" data-tsina="2073075005" class="share clearfix">
+	  <div data-url="http://hexo.asiacream.cn/2017/11/06/用Powershell安装IIS和FTP服务/" data-title="用Powershell安装IIS和FTP服务 | MyBlog" data-tsina="2073075005" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -211,19 +215,11 @@ zh-CN"
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/11/05/伴奏录制模式/" title="伴奏风格录制模式">
-  <strong>上一篇：</strong><br/>
-  <span>
-  伴奏风格录制模式</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/10/19/使用hexo搭建个人博客/"  title="使用hexo搭建个人博客">
+<a href="/2017/11/05/伴奏录制模式/"  title="伴奏风格录制模式">
  <strong>下一篇：</strong><br/> 
- <span>使用hexo搭建个人博客
+ <span>伴奏风格录制模式
 </span>
 </a>
 </div>
@@ -239,7 +235,7 @@ zh-CN"
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解压"><span class="toc-number">1.1.</span> <span class="toc-text">解压</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-number">1.2.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为MongoDB配置Windows服务"><span class="toc-number">1.3.</span> <span class="toc-text">为MongoDB配置Windows服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行"><span class="toc-number">1.4.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试"><span class="toc-number">1.5.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可视化工具"><span class="toc-number">2.</span> <span class="toc-text">可视化工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB-Compass"><span class="toc-number">2.1.</span> <span class="toc-text">MongoDB Compass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQL-Manager"><span class="toc-number">2.2.</span> <span class="toc-text">NoSQL Manager</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoBooster"><span class="toc-number">2.3.</span> <span class="toc-text">MongoBooster</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Robo-3T"><span class="toc-number">2.4.</span> <span class="toc-text">Robo 3T</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运行mongod-exe闪退"><span class="toc-number">3.1.</span> <span class="toc-text">运行mongod.exe闪退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB设置开机启动"><span class="toc-number">3.2.</span> <span class="toc-text">MongoDB设置开机启动</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
  
   </div>
 
