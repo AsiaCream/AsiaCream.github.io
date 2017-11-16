@@ -1,0 +1,610 @@
+
+ <!DOCTYPE HTML>
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            <meta charset="UTF-8">
+            
+                <title>
+                    
+                        用Powershell安装IIS和FTP服务 |
+                            
+                                MyBlog
+                </title>
+                <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+                
+                    <meta name="author" content="dofu">
+                    
+
+                        
+                                <meta name="description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta name="keywords" content="Powershell,IIS,脚本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Powershell安装IIS和FTP服务">
+<meta property="og:url" content="http://hexo.asiacream.cn/archives/ps-install-iis-ftp.html">
+<meta property="og:site_name" content="MyBlog">
+<meta property="og:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+<meta property="og:updated_time" content="2017-11-16T06:37:47.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Powershell安装IIS和FTP服务">
+<meta name="twitter:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta name="twitter:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+
+                                    
+                                        <link rel="alternative" href="/atom.xml" title="MyBlog" type="application/atom+xml">
+                                        
+                                            
+                                                <link rel="icon" href="/img/favicon.ico">
+                                                
+                                                    
+                                                        <link rel="apple-touch-icon" href="/img/jacman.jpg">
+                                                        <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+                                                        
+                                                            <link rel="stylesheet" href="/css/style.css">
+                                                                <script>
+                                                                    (function() {
+                                                                        var bp = document.createElement('script');
+                                                                        var curProtocol = window.location.protocol.split(':')[0];
+                                                                        if (curProtocol === 'https') {
+                                                                            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                                                                        } else {
+                                                                            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                                                                        }
+                                                                        var s = document.getElementsByTagName("script")[0];
+                                                                        s.parentNode.insertBefore(bp, s);
+                                                                    })();
+                                                                </script>
+
+        </head>
+  <body>
+    <header>
+      
+    <div>
+        
+            <div id="imglogo">
+                <a href="/"><img src="/img/logo.png" alt="MyBlog" title="MyBlog"/></a>
+            </div>
+            
+                <div id="textlogo">
+                    <h1 class="site-name">
+                        <a href="/" title="MyBlog">
+                            MyBlog
+                        </a>
+                    </h1>
+                    <h2 class="blog-motto">
+                        
+                            To be or not to be,that is a question
+                                
+                    </h2>
+                </div>
+                <div class="navbar">
+                    <a class="navbutton navmobile" href="#" title="菜单">
+                    </a>
+                </div>
+                <nav class="animated">
+                    <ul>
+                        <ul>
+                            
+                                <li>
+                                    <a href="/">
+                                        主页
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/archives">
+                                        归档
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/categories">
+                                        分类
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/tags">
+                                        标签
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/about">
+                                        关于
+                                    </a>
+                                </li>
+                                
+                                    <!-- <li>
+                                        
+                                                        <form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+                                                            <label>Search</label>
+                                                            <input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+                                                            <input type="hidden" name="q" value="site:hexo.asiacream.cn">
+                                                        </form>
+                                                        
+                                    </li> -->
+                        </ul>
+                </nav>
+    </div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/archives/ps-install-iis-ftp.html" title="用Powershell安装IIS和FTP服务" itemprop="url">用Powershell安装IIS和FTP服务</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="dofu" target="_blank" itemprop="author">dofu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-11-06T03:44:58.000Z" itemprop="datePublished"> 发表于 2017-11-06</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<ul>
+<li>Windows Server 2012 R2 Datacenter</li>
+<li>PowerShell</li>
+</ul>
+<h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快</p>
+<h3 id="安装IIS相关"><a href="#安装IIS相关" class="headerlink" title="安装IIS相关"></a>安装IIS相关</h3><p>IIS上部署的是C#项目，因此得安装IIS服务和应用开发</p>
+<h4 id="安装IIS服务器"><a href="#安装IIS服务器" class="headerlink" title="安装IIS服务器"></a>安装IIS服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server</div></pre></td></tr></table></figure>
+<h4 id="安装-NET应用程序开发"><a href="#安装-NET应用程序开发" class="headerlink" title="安装.NET应用程序开发"></a>安装.NET应用程序开发</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-asp,web-asp-net,web-asp-net45</div></pre></td></tr></table></figure>
+<h4 id="安装IIS管理控制台"><a href="#安装IIS管理控制台" class="headerlink" title="安装IIS管理控制台"></a>安装IIS管理控制台</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-mgmt-console</div></pre></td></tr></table></figure>
+<h4 id="检查有没有安装成功"><a href="#检查有没有安装成功" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
+<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
+<h4 id="终极打包安装"><a href="#终极打包安装" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server,web-asp,web-asp-net,web-asp-net45,web-mgmt-console</div></pre></td></tr></table></figure>
+<h3 id="安装FTP相关"><a href="#安装FTP相关" class="headerlink" title="安装FTP相关"></a>安装FTP相关</h3><p>FTP服务分为服务和拓展</p>
+<h4 id="安装FTP服务器"><a href="#安装FTP服务器" class="headerlink" title="安装FTP服务器"></a>安装FTP服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server</div></pre></td></tr></table></figure>
+<h4 id="安装FTP服务"><a href="#安装FTP服务" class="headerlink" title="安装FTP服务"></a>安装FTP服务</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-service</div></pre></td></tr></table></figure>
+<h4 id="安装FTP拓展"><a href="#安装FTP拓展" class="headerlink" title="安装FTP拓展"></a>安装FTP拓展</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-ext</div></pre></td></tr></table></figure>
+<h4 id="检查有没有安装成功-1"><a href="#检查有没有安装成功-1" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
+<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
+<h4 id="终极打包安装-1"><a href="#终极打包安装-1" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server,web-ftp-service,web-ftp-ext</div></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>使用PowerShell安装windows功能组件比直接鼠标点击的速度快，命令行输入后就可以挂机了，等待安装成功即可</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Web服务/">Web服务</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Powershell/">Powershell</a><a href="/tags/IIS/">IIS</a><a href="/tags/脚本/">脚本</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hexo.asiacream.cn/archives/ps-install-iis-ftp.html" data-title="用Powershell安装IIS和FTP服务 | MyBlog" data-tsina="2073075005" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/archives/sqlserver2008r2-download.html" title="Sql Server 2008 R2 DownLoad">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Sql Server 2008 R2 DownLoad</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/archives/style-recore-mode.html"  title="伴奏风格录制模式">
+ <strong>下一篇：</strong><br/> 
+ <span>伴奏风格录制模式
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Music/" title="Music">Music<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Web服务/" title="Web服务">Web服务<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Translation/" title="Translation">Translation<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Mongodb/" title="Mongodb">Mongodb<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nosql/" title="Nosql">Nosql<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Powershell/" title="Powershell">Powershell<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SqlServer/" title="SqlServer">SqlServer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Note/" title="Note">Note<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Korg-Pa3x/" title="Korg Pa3x">Korg Pa3x<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IIS/" title="IIS">IIS<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.1234.sh" target="_blank" title="Yuuko">Yuuko</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.eastmelon.cn" target="_blank" title="小明">Small Ming</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://hexo.icemao.cn" target="_blank" title="IceMao">IceMao</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.liziwu.net" target="_blank" title="李自伍">Liziwu</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hi，My Name is FDD，You can call me Dofu. <br/>
+			This is my blog which use chinese to record.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2073075005" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/Cream2015" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:dofu8@outlook.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="dofu">dofu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c60d947b459f619e542a6137bb1c318f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -9,28 +9,30 @@ zh-CN"
             
                 <title>
                     
-                        使用hexo搭建个人博客 |
+                        如何使用Hexo搭建个人博客 |
                             
                                 MyBlog
                 </title>
                 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
                 
-                    <meta name="author" content="FDD">
+                    <meta name="author" content="dofu">
                     
 
                         
-                                <meta name="description" content="本文用于记录使用hexo搭建个人博客过程中遇到的问题，托管在github上ps:托管github总比托管在自己服务器好吧，毕竟每个月的Azure额度不多，其中一个Blog已经部署在Azure上了，剩下这个直接部署在GitHub上就省事了，两边博客内容都是使用markdown语法，直接ctrl c + v解决 Before准备工作 安装git 安装nodejs 申请github账号 (可选)自己的域">
-<meta name="keywords" content="git,node,hexo">
+                            <meta name="keywords" content="hexo,搭建个人博客,搭建个人网站,hexo安装教学,hexo部署">
+                            
+                                <meta name="description" content="使用hexo搭建个人博客的教学,快速搭建个人网站,快速搭建个人博客">
+<meta name="keywords" content="hexo,搭建个人博客,搭建个人网站,hexo安装教学,hexo部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用hexo搭建个人博客">
-<meta property="og:url" content="http://hexo.asiacream.cn/2017/10/19/使用hexo搭建个人博客/index.html">
+<meta property="og:title" content="如何使用Hexo搭建个人博客">
+<meta property="og:url" content="http://hexo.asiacream.cn/archives/hexo-build-your-blog.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="本文用于记录使用hexo搭建个人博客过程中遇到的问题，托管在github上ps:托管github总比托管在自己服务器好吧，毕竟每个月的Azure额度不多，其中一个Blog已经部署在Azure上了，剩下这个直接部署在GitHub上就省事了，两边博客内容都是使用markdown语法，直接ctrl c + v解决 Before准备工作 安装git 安装nodejs 申请github账号 (可选)自己的域">
+<meta property="og:description" content="使用hexo搭建个人博客的教学,快速搭建个人网站,快速搭建个人博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-19T06:56:56.000Z">
+<meta property="og:updated_time" content="2017-11-16T06:44:08.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo搭建个人博客">
-<meta name="twitter:description" content="本文用于记录使用hexo搭建个人博客过程中遇到的问题，托管在github上ps:托管github总比托管在自己服务器好吧，毕竟每个月的Azure额度不多，其中一个Blog已经部署在Azure上了，剩下这个直接部署在GitHub上就省事了，两边博客内容都是使用markdown语法，直接ctrl c + v解决 Before准备工作 安装git 安装nodejs 申请github账号 (可选)自己的域">
+<meta name="twitter:title" content="如何使用Hexo搭建个人博客">
+<meta name="twitter:description" content="使用hexo搭建个人博客的教学,快速搭建个人网站,快速搭建个人博客">
 
                                     
                                         <link rel="alternative" href="/atom.xml" title="MyBlog" type="application/atom+xml">
@@ -75,7 +77,7 @@ zh-CN"
                     </h1>
                     <h2 class="blog-motto">
                         
-                            To be or not to be , that is a question
+                            To be or not to be,that is a question
                                 
                     </h2>
                 </div>
@@ -137,11 +139,11 @@ zh-CN"
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/10/19/使用hexo搭建个人博客/" title="使用hexo搭建个人博客" itemprop="url">使用hexo搭建个人博客</a>
+      <a href="/archives/hexo-build-your-blog.html" title="如何使用Hexo搭建个人博客" itemprop="url">如何使用Hexo搭建个人博客</a>
   </h1>
   <p class="article-author">By
        
-		<a href="/about" title="FDD" target="_blank" itemprop="author">FDD</a>
+		<a href="/about" title="dofu" target="_blank" itemprop="author">dofu</a>
 		
   <p class="article-time">
     <time datetime="2017-10-19T05:13:24.000Z" itemprop="datePublished"> 发表于 2017-10-19</time>
@@ -153,12 +155,12 @@ zh-CN"
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo环境"><span class="toc-number">2.</span> <span class="toc-text">hexo环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建博客"><span class="toc-number">3.</span> <span class="toc-text">搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化博客"><span class="toc-number">3.1.</span> <span class="toc-text">初始化博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置博客信息"><span class="toc-number">4.</span> <span class="toc-text">配置博客信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置站点信息"><span class="toc-number">4.1.</span> <span class="toc-text">配置站点信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到网上"><span class="toc-number">5.</span> <span class="toc-text">发布到网上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用github-pages"><span class="toc-number">5.1.</span> <span class="toc-text">使用github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">5.2.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">5.3.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置发布地址"><span class="toc-number">5.4.</span> <span class="toc-text">配置发布地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">5.5.</span> <span class="toc-text">发布到github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义github-pages域名"><span class="toc-number">6.</span> <span class="toc-text">自定义github pages域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#github-pages设置"><span class="toc-number">6.1.</span> <span class="toc-text">github pages设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">6.2.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义域名设置"><span class="toc-number">6.3.</span> <span class="toc-text">自定义域名设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">6.4.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-number">7.</span> <span class="toc-text">关于</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-number">7.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类，标签"><span class="toc-number">8.</span> <span class="toc-text">分类，标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-1"><span class="toc-number">8.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误页面"><span class="toc-number">9.</span> <span class="toc-text">错误页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-2"><span class="toc-number">9.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用Hexo搭建个人博客"><span class="toc-number">1.</span> <span class="toc-text">如何使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo环境"><span class="toc-number">2.</span> <span class="toc-text">hexo环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建博客"><span class="toc-number">3.</span> <span class="toc-text">搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化博客"><span class="toc-number">3.1.</span> <span class="toc-text">初始化博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置博客信息"><span class="toc-number">4.</span> <span class="toc-text">配置博客信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置站点信息"><span class="toc-number">4.1.</span> <span class="toc-text">配置站点信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到网上"><span class="toc-number">5.</span> <span class="toc-text">发布到网上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用github-pages"><span class="toc-number">5.1.</span> <span class="toc-text">使用github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">5.2.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">5.3.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置发布地址"><span class="toc-number">5.4.</span> <span class="toc-text">配置发布地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">5.5.</span> <span class="toc-text">发布到github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义github-pages域名"><span class="toc-number">6.</span> <span class="toc-text">自定义github pages域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#github-pages设置"><span class="toc-number">6.1.</span> <span class="toc-text">github pages设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">6.2.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义域名设置"><span class="toc-number">6.3.</span> <span class="toc-text">自定义域名设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">6.4.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-number">7.</span> <span class="toc-text">关于</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-number">7.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类，标签"><span class="toc-number">8.</span> <span class="toc-text">分类，标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-1"><span class="toc-number">8.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误页面"><span class="toc-number">9.</span> <span class="toc-text">错误页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-2"><span class="toc-number">9.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
 		
 		</div>
 		
 		<p>本文用于记录使用hexo搭建个人博客过程中遇到的问题，托管在github上<br>ps:托管github总比托管在自己服务器好吧，毕竟每个月的Azure额度不多，其中一个<a href="http://blog.asiacream.cn" target="_blank" rel="external">Blog</a>已经部署在Azure上了，剩下这个直接部署在GitHub上就省事了，两边博客内容都是使用markdown语法，直接ctrl c + v解决</p>
-<h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
+<h2 id="如何使用Hexo搭建个人博客"><a href="#如何使用Hexo搭建个人博客" class="headerlink" title="如何使用Hexo搭建个人博客"></a>如何使用Hexo搭建个人博客</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ul>
 <li>安装git</li>
 <li>安装nodejs</li>
 <li>申请github账号</li>
@@ -290,7 +292,7 @@ zh-CN"
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/git/">git</a><a href="/tags/node/">node</a><a href="/tags/hexo/">hexo</a>
+  <span></span> <a href="/tags/Hexo/">Hexo</a><a href="/tags/Git/">Git</a><a href="/tags/Node/">Node</a>
   </div>
 
 </div>
@@ -299,7 +301,7 @@ zh-CN"
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://hexo.asiacream.cn/2017/10/19/使用hexo搭建个人博客/" data-title="使用hexo搭建个人博客 | MyBlog" data-tsina="2073075005" class="share clearfix">
+	  <div data-url="http://hexo.asiacream.cn/archives/hexo-build-your-blog.html" data-title="如何使用Hexo搭建个人博客 | MyBlog" data-tsina="2073075005" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -313,16 +315,16 @@ zh-CN"
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/10/27/MongoDB环境配置/" title="MongoDB环境配置">
+ <a href="/archives/mongodb-configure-env.html" title="MongoDB配置环境">
   <strong>上一篇：</strong><br/>
   <span>
-  MongoDB环境配置</span>
+  MongoDB配置环境</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/10/18/Hello World/"  title="Hello World">
+<a href="/archives/hello-word.html"  title="Hello World">
  <strong>下一篇：</strong><br/> 
  <span>Hello World
 </span>
@@ -340,7 +342,7 @@ zh-CN"
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo环境"><span class="toc-number">2.</span> <span class="toc-text">hexo环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建博客"><span class="toc-number">3.</span> <span class="toc-text">搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化博客"><span class="toc-number">3.1.</span> <span class="toc-text">初始化博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置博客信息"><span class="toc-number">4.</span> <span class="toc-text">配置博客信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置站点信息"><span class="toc-number">4.1.</span> <span class="toc-text">配置站点信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到网上"><span class="toc-number">5.</span> <span class="toc-text">发布到网上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用github-pages"><span class="toc-number">5.1.</span> <span class="toc-text">使用github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">5.2.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">5.3.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置发布地址"><span class="toc-number">5.4.</span> <span class="toc-text">配置发布地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">5.5.</span> <span class="toc-text">发布到github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义github-pages域名"><span class="toc-number">6.</span> <span class="toc-text">自定义github pages域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#github-pages设置"><span class="toc-number">6.1.</span> <span class="toc-text">github pages设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">6.2.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义域名设置"><span class="toc-number">6.3.</span> <span class="toc-text">自定义域名设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">6.4.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-number">7.</span> <span class="toc-text">关于</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-number">7.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类，标签"><span class="toc-number">8.</span> <span class="toc-text">分类，标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-1"><span class="toc-number">8.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误页面"><span class="toc-number">9.</span> <span class="toc-text">错误页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-2"><span class="toc-number">9.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用Hexo搭建个人博客"><span class="toc-number">1.</span> <span class="toc-text">如何使用Hexo搭建个人博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo环境"><span class="toc-number">2.</span> <span class="toc-text">hexo环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Hexo"><span class="toc-number">2.1.</span> <span class="toc-text">安装Hexo</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建博客"><span class="toc-number">3.</span> <span class="toc-text">搭建博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化博客"><span class="toc-number">3.1.</span> <span class="toc-text">初始化博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置博客信息"><span class="toc-number">4.</span> <span class="toc-text">配置博客信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置站点信息"><span class="toc-number">4.1.</span> <span class="toc-text">配置站点信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布到网上"><span class="toc-number">5.</span> <span class="toc-text">发布到网上</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用github-pages"><span class="toc-number">5.1.</span> <span class="toc-text">使用github pages</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">5.2.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装插件"><span class="toc-number">5.3.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置发布地址"><span class="toc-number">5.4.</span> <span class="toc-text">配置发布地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布到github"><span class="toc-number">5.5.</span> <span class="toc-text">发布到github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义github-pages域名"><span class="toc-number">6.</span> <span class="toc-text">自定义github pages域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#github-pages设置"><span class="toc-number">6.1.</span> <span class="toc-text">github pages设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">6.2.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义域名设置"><span class="toc-number">6.3.</span> <span class="toc-text">自定义域名设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决办法"><span class="toc-number">6.4.</span> <span class="toc-text">解决办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于"><span class="toc-number">7.</span> <span class="toc-text">关于</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加"><span class="toc-number">7.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类，标签"><span class="toc-number">8.</span> <span class="toc-text">分类，标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-1"><span class="toc-number">8.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误页面"><span class="toc-number">9.</span> <span class="toc-text">错误页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-2"><span class="toc-number">9.1.</span> <span class="toc-text">添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a></li></ol>
  
   </div>
 
@@ -354,7 +356,11 @@ zh-CN"
 		<ul>
 		
 		  
-			<li><a href="/categories/Note/" title="Note">Note<sup>1</sup></a></li>
+			<li><a href="/categories/Database/" title="Database">Database<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Music/" title="Music">Music<sup>1</sup></a></li>
 		  
 		
 		  
@@ -362,15 +368,7 @@ zh-CN"
 		  
 		
 		  
-			<li><a href="/categories/music/" title="music">music<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+			<li><a href="/categories/前端/" title="前端">前端<sup>3</sup></a></li>
 		  
 		
 		</ul>
@@ -383,47 +381,51 @@ zh-CN"
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/mongoDB/" title="mongoDB">mongoDB<sup>1</sup></a></li>
+				<li><a href="/tags/Translation/" title="Translation">Translation<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+				<li><a href="/tags/Mongodb/" title="Mongodb">Mongodb<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/node/" title="node">node<sup>1</sup></a></li>
+				<li><a href="/tags/Nosql/" title="Nosql">Nosql<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/noSql/" title="noSql">noSql<sup>1</sup></a></li>
+				<li><a href="/tags/Powershell/" title="Powershell">Powershell<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/PA3X/" title="PA3X">PA3X<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/翻译/" title="翻译">翻译<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/powershell/" title="powershell">powershell<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/iis/" title="iis">iis<sup>1</sup></a></li>
+				<li><a href="/tags/Git/" title="Git">Git<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/脚本/" title="脚本">脚本<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SqlServer/" title="SqlServer">SqlServer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Note/" title="Note">Note<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Korg-Pa3x/" title="Korg Pa3x">Korg Pa3x<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IIS/" title="IIS">IIS<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -501,7 +503,7 @@ zh-CN"
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
-		<a href="/about" target="_blank" title="FDD">FDD</a>
+		<a href="/about" target="_blank" title="dofu">dofu</a>
 		
 		
 		</p>
