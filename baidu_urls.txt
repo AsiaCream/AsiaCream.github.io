@@ -1,5 +1,5 @@
-http://hexo.asiacream.cn2017/11/16/hexo-revise-url-configure.html
-http://hexo.asiacream.cn2017/11/10/sqlserver2008r2-download.html
-http://hexo.asiacream.cn2017/11/06/ps-install-iis-ftp.html
-http://hexo.asiacream.cn2017/11/05/style-recore-mode.html
-http://hexo.asiacream.cn2017/10/27/mongodb-configure-env.html
+archives/hexo-revise-url-configure.html
+archives/sqlserver2008r2-download.html
+archives/ps-install-iis-ftp.html
+archives/style-recore-mode.html
+archives/mongodb-configure-env.html
