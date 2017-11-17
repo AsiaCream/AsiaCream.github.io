@@ -9,7 +9,7 @@ zh-CN"
             
                 <title>
                     
-                        用Powershell安装IIS和FTP服务 |
+                        Hello World |
                             
                                 MyBlog
                 </title>
@@ -19,21 +19,18 @@ zh-CN"
                     
 
                         
-                                <meta name="description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
-<meta name="keywords" content="Powershell,IIS,脚本">
+                                <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quik">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Powershell安装IIS和FTP服务">
-<meta property="og:url" content="http://hexo.asiacream.cn/archives/ps-install-iis-ftp.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://hexo.asiacream.cn/2017/10/18/hello-word.html">
 <meta property="og:site_name" content="MyBlog">
-<meta property="og:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quik">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
-<meta property="og:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
-<meta property="og:updated_time" content="2017-11-16T06:37:47.184Z">
+<meta property="og:updated_time" content="2017-11-16T06:44:14.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Powershell安装IIS和FTP服务">
-<meta name="twitter:description" content="Windows Server 2012 R2 Datacenter PowerShell  Before开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快 安装IIS相关IIS上部署的是C#项目，因此得安装IIS服务和应用开发">
-<meta name="twitter:image" content="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quik">
 
                                     
                                         <link rel="alternative" href="/atom.xml" title="MyBlog" type="application/atom+xml">
@@ -45,7 +42,7 @@ zh-CN"
                                                         <link rel="apple-touch-icon" href="/img/jacman.jpg">
                                                         <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
                                                         
-                                                            <link rel="stylesheet" href="../css/style.css">
+                                                            <link rel="stylesheet" href="../../../css/style.css">
                                                                 <script>
                                                                     (function() {
                                                                         var bp = document.createElement('script');
@@ -140,14 +137,14 @@ zh-CN"
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/archives/ps-install-iis-ftp.html" title="用Powershell安装IIS和FTP服务" itemprop="url">用Powershell安装IIS和FTP服务</a>
+      <a href="/2017/10/18/hello-word.html" title="Hello World" itemprop="url">Hello World</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="dofu" target="_blank" itemprop="author">dofu</a>
 		
   <p class="article-time">
-    <time datetime="2017-11-06T03:44:58.000Z" itemprop="datePublished"> 发表于 2017-11-06</time>
+    <time datetime="2017-10-18T10:12:35.000Z" itemprop="datePublished"> 发表于 2017-10-18</time>
     
   </p>
 </header>
@@ -156,30 +153,19 @@ zh-CN"
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quik-Start"><span class="toc-number">1.</span> <span class="toc-text">Quik Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-Static-Files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate Static Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-Remote-Site"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy Remote Site</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<ul>
-<li>Windows Server 2012 R2 Datacenter</li>
-<li>PowerShell</li>
-</ul>
-<h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>开始的时候是通过点击仪表盘添加角色信息的方式安装IIS,.NET Framework和FTP的，后来感觉这种方法比较慢，每次部署到一台新的服务测试的时候都需要点击多次，非常麻烦，于是想到用PS脚本来执行安装，速度也比较快</p>
-<h3 id="安装IIS相关"><a href="#安装IIS相关" class="headerlink" title="安装IIS相关"></a>安装IIS相关</h3><p>IIS上部署的是C#项目，因此得安装IIS服务和应用开发</p>
-<h4 id="安装IIS服务器"><a href="#安装IIS服务器" class="headerlink" title="安装IIS服务器"></a>安装IIS服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server</div></pre></td></tr></table></figure>
-<h4 id="安装-NET应用程序开发"><a href="#安装-NET应用程序开发" class="headerlink" title="安装.NET应用程序开发"></a>安装.NET应用程序开发</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-asp,web-asp-net,web-asp-net45</div></pre></td></tr></table></figure>
-<h4 id="安装IIS管理控制台"><a href="#安装IIS管理控制台" class="headerlink" title="安装IIS管理控制台"></a>安装IIS管理控制台</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-mgmt-console</div></pre></td></tr></table></figure>
-<h4 id="检查有没有安装成功"><a href="#检查有没有安装成功" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
-<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
-<h4 id="终极打包安装"><a href="#终极打包安装" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-server,web-asp,web-asp-net,web-asp-net45,web-mgmt-console</div></pre></td></tr></table></figure>
-<h3 id="安装FTP相关"><a href="#安装FTP相关" class="headerlink" title="安装FTP相关"></a>安装FTP相关</h3><p>FTP服务分为服务和拓展</p>
-<h4 id="安装FTP服务器"><a href="#安装FTP服务器" class="headerlink" title="安装FTP服务器"></a>安装FTP服务器</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server</div></pre></td></tr></table></figure>
-<h4 id="安装FTP服务"><a href="#安装FTP服务" class="headerlink" title="安装FTP服务"></a>安装FTP服务</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-service</div></pre></td></tr></table></figure>
-<h4 id="安装FTP拓展"><a href="#安装FTP拓展" class="headerlink" title="安装FTP拓展"></a>安装FTP拓展</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-ext</div></pre></td></tr></table></figure>
-<h4 id="检查有没有安装成功-1"><a href="#检查有没有安装成功-1" class="headerlink" title="检查有没有安装成功"></a>检查有没有安装成功</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get-windowsfeature web*</div></pre></td></tr></table></figure>
-<p><img src="http://blog.file.asiacream.cn/powershell%20install%20windwosfeature.jpg" alt=""></p>
-<h4 id="终极打包安装-1"><a href="#终极打包安装-1" class="headerlink" title="终极打包安装"></a>终极打包安装</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install-windowsfeature web-ftp-server,web-ftp-service,web-ftp-ext</div></pre></td></tr></table></figure>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>使用PowerShell安装windows功能组件比直接鼠标点击的速度快，命令行输入后就可以挂机了，等待安装成功即可</p>
+		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quik-Start"><a href="#Quik-Start" class="headerlink" title="Quik Start"></a>Quik Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-Static-Files"><a href="#Generate-Static-Files" class="headerlink" title="Generate Static Files"></a>Generate Static Files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-Remote-Site"><a href="#Deploy-Remote-Site" class="headerlink" title="Deploy Remote Site"></a>Deploy Remote Site</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -187,13 +173,13 @@ zh-CN"
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="../categories/Web服务/">Web服务</a>
+  <a class="article-category-link" href="../../../categories/前端/">前端</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/Powershell/">Powershell</a><a href="/tags/IIS/">IIS</a><a href="/tags/脚本/">脚本</a>
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
   </div>
 
 </div>
@@ -202,7 +188,7 @@ zh-CN"
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://hexo.asiacream.cnarchives/ps-install-iis-ftp.html" data-title="用Powershell安装IIS和FTP服务 | MyBlog" data-tsina="2073075005" class="share clearfix">
+	  <div data-url="http://hexo.asiacream.cn2017/10/18/hello-word.html" data-title="Hello World | MyBlog" data-tsina="2073075005" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -216,21 +202,13 @@ zh-CN"
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/archives/sqlserver2008r2-download.html" title="Sql Server 2008 R2 DownLoad">
+ <a href="/2017/10/19/hexo-build-your-blog.html" title="如何使用Hexo搭建个人博客">
   <strong>上一篇：</strong><br/>
   <span>
-  Sql Server 2008 R2 DownLoad</span>
+  如何使用Hexo搭建个人博客</span>
 </a>
 </div>
 
-
-<div class="next">
-<a href="/archives/style-recore-mode.html"  title="伴奏风格录制模式">
- <strong>下一篇：</strong><br/> 
- <span>伴奏风格录制模式
-</span>
-</a>
-</div>
 
 </nav>
 
@@ -243,7 +221,7 @@ zh-CN"
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.</span> <span class="toc-text">Before</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装IIS相关"><span class="toc-number">1.1.</span> <span class="toc-text">安装IIS相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS服务器"><span class="toc-number">1.1.1.</span> <span class="toc-text">安装IIS服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装-NET应用程序开发"><span class="toc-number">1.1.2.</span> <span class="toc-text">安装.NET应用程序开发</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装IIS管理控制台"><span class="toc-number">1.1.3.</span> <span class="toc-text">安装IIS管理控制台</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功"><span class="toc-number">1.1.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装"><span class="toc-number">1.1.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装FTP相关"><span class="toc-number">1.2.</span> <span class="toc-text">安装FTP相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务器"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装FTP服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装FTP服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装FTP拓展"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装FTP拓展</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检查有没有安装成功-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">检查有没有安装成功</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#终极打包安装-1"><span class="toc-number">1.2.5.</span> <span class="toc-text">终极打包安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quik-Start"><span class="toc-number">1.</span> <span class="toc-text">Quik Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-Static-Files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate Static Files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-Remote-Site"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy Remote Site</span></a></li></ol></li></ol>
  
   </div>
 
@@ -286,7 +264,7 @@ zh-CN"
 			
 		
 			
-				<li><a href="/tags/Note/" title="Note">Note<sup>1</sup></a></li>
+				<li><a href="/tags/Translation/" title="Translation">Translation<sup>1</sup></a></li>
 			
 		
 			
@@ -314,15 +292,15 @@ zh-CN"
 			
 		
 			
-				<li><a href="/tags/Korg-Pa3x/" title="Korg Pa3x">Korg Pa3x<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Translation/" title="Translation">Translation<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/SqlServer/" title="SqlServer">SqlServer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Note/" title="Note">Note<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Korg-Pa3x/" title="Korg Pa3x">Korg Pa3x<sup>1</sup></a></li>
 			
 		
 			
