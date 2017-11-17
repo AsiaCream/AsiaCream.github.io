@@ -29,7 +29,7 @@ zh-CN"
 <meta property="og:site_name" content="MyBlog">
 <meta property="og:description" content="使用hexo搭建个人博客的教学,快速搭建个人网站,快速搭建个人博客">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-16T06:44:08.827Z">
+<meta property="og:updated_time" content="2017-11-16T07:10:30.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Hexo搭建个人博客">
 <meta name="twitter:description" content="使用hexo搭建个人博客的教学,快速搭建个人网站,快速搭建个人博客">
@@ -274,7 +274,7 @@ zh-CN"
 <h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>找到根目录下source，点击进入文件夹，新建文件，CNAME，注意，没有后缀名，把自定义域名填写上，如hexo.asiacream.cn，接着重新部署到github上，发现刚刚的问题解决了</p>
 <h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><p>在根目录下找到source文件夹，里边新建一个about文件夹，然后添加文件index.md，用于填写自己的个人信息，填写完后保存，生成静态文件，发布后即可查看</p>
 <h2 id="分类，标签"><a href="#分类，标签" class="headerlink" title="分类，标签"></a>分类，标签</h2><h3 id="添加-1"><a href="#添加-1" class="headerlink" title="添加"></a>添加</h3><p>还是回到source文件夹下，新建categories和tags文件夹，各自文件夹中分别创建index.md，然后分类的内容填写如下，标签的将categories替换位tags即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: categories</div><div class="line">title: categories</div><div class="line">---</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: categories</div><div class="line">title: categories</div><div class="line">---</div></pre></td></tr></table></figure>
 <p>填写完后保存，发布即可</p>
 <h2 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h2><h3 id="添加-2"><a href="#添加-2" class="headerlink" title="添加"></a>添加</h3><p>关于错误页面，需要自己新增加一个，可以自己写一个404.html，然后放到source文件夹中，如下代码是<a href="http://www.qq.com/404/" target="_blank" rel="external">腾讯公益404错误页面</a> 直接复制粘贴到404.html即可使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;404错误页面&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;script type=&quot;text/javascript&quot; src=&quot;http://www.qq.com/404/search_children.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
