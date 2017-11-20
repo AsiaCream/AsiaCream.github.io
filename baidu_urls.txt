@@ -1,5 +1,5 @@
-archives/hexo-revise-url-configure.html
-archives/sqlserver2008r2-download.html
-archives/ps-install-iis-ftp.html
-archives/style-recore-mode.html
-archives/mongodb-configure-env.html
+http://hexo.asiacream.cnarchives/markdown-reference-primary.html
+http://hexo.asiacream.cnarchives/hexo-revise-url-configure.html
+http://hexo.asiacream.cnarchives/sqlserver2008r2-download.html
+http://hexo.asiacream.cnarchives/ps-install-iis-ftp.html
+http://hexo.asiacream.cnarchives/style-recore-mode.html
